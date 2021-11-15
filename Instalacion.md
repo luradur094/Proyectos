@@ -1,0 +1,11 @@
+# Instalacion de S.O debian a una Raspberry
+Lo primero que tenemos que hacer es descargar la imagen para grabar en nuestra Raspberry
+
+Una vez descargada procedemos a grabar la imagen. Yo lo hago con BaleaEtcher y en un disco ssd y su carcasa, la Raspberry
+## Conectar a SSH
+Añadimos la imagen descargada, seleccionamos la imagen y esperamos a que termine de grabar y verificar. Una vez termina, accedemos a el disco ssd, tarjeta de memoria o donde grabamos la imagen. Veremos 2 particiones entramos en la que pone RASPIROOT y seguimos esta ruta RASPIROOT/etc/network/interfaces.d/ editamos el archivo wlan0, ( **esto es para conectar directamente nuestra raspi con la wifi** ) y editamos el archivo cambiando por nuestros datos.
+
+Ahora en nuestro pc vamos a generar una ssh keygen, esto servirá para que se cree una confianza entre la raspi y nuestro equipo para no depender de contraseñas y que sea mucho mas seguro el acceso por ssh. Abrimos consola, terminal, cmd dependiendo del SO de nuestro ordenador. Una vez abierta la terminal, en mi caso Konsole, tecleamos ssh-keygen y aceptamos los mensajes que nos van saliendo, no es necesario rellenar ningún dato ni teclear ninguna contraseña. Ese archivo se nos crea en la carpeta de nuestro usuario, fijaros en el mensaje de la terminal, donde os indica el lugar del archivo. En mi caso la ruta seria /home/oscar/.ssh/,tenéis que daros cuenta que el nombre de la carpeta esta con un punto, eso es por que esta oculta, si no veis la carpeta pulsando ctrl+h os muestra los archivos ocultos. Una vez dentro copiamos veremos varios archivos, el que nos interesa es el que se llama id_rsa.pub, lo copiamos y nos vamos a nuestro ssd. En la partición que dijimos al principio, entramos y nos vamos a la carpeta home, una vez dentro creamos una carpeta que se llame .ssh y dentro de ella otra con el nombre authorized_keys en esa carpeta pegamos el archivo que copiamos antes llamado id_rsa.pub.
+
+## Comprobar su funcionamiento
+Bueno una vez realzados estos pasos llega el momento de conectar nuestro ssd a la raspi, necesitaremos un teclado y un monitor una vez conectados arrancamos la raspi, esperamos a que cargue el SO. Cuando finalice nos pedirá un usuario, tecleamos root y listo ya estamos dentro. Ahora podemos crear un pasword y un usuario.
